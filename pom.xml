@@ -161,7 +161,6 @@
                 <version>2.3</version>
             </plugin>
 
-<!--
             <plugin>
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>exec-maven-plugin</artifactId>
@@ -176,14 +175,13 @@
                             <classpathScope>test</classpathScope>
                             <mainClass>de.flapdoodle.pattern.buildsupport.ExtractMarkdownFromCode</mainClass>
                             <arguments>
-                                <argument>${basedir}/src/test/java/de/flapdoodle/guava/examples/TestExampleReadMeCode.java</argument>
-                                <argument>${project.build.directory}/usage-reademe.md</argument>
+                                <argument>${basedir}/src/test/java/de/flapdoodle/pattern/TestExampleReadMeCode.java</argument>
+                                <argument>${project.build.directory}/usage-readme.md</argument>
                             </arguments>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
--->
 
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
