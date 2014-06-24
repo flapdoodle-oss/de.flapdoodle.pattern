@@ -26,15 +26,14 @@ Snapshots (Repository http://oss.sonatype.org/content/repositories/snapshots)
 
 ### Usage
 ```java
-	Pattern pattern = Pattern.compile("(?<start>[a-zA-Z]+):(?<end>[a-zA-Z]+(?<number>[0-9]+))");
-	Matcher matcher = pattern.matcher("stuff:has42");
+Pattern pattern = Pattern.compile("(?<start>[a-zA-Z]+):(?<end>[a-zA-Z]+(?<number>[0-9]+))");
+Matcher matcher = pattern.matcher("stuff:has42");
 
-	Optional<Map<String, String>> match = Patterns.match(matcher);
+Optional<Map<String, String>> match = Patterns.match(matcher);
 
-	assertTrue(match.isPresent());
-	assertEquals("start", "stuff", match.get().get("start"));
-	assertEquals("end", "has42", match.get().get("end"));
-	assertEquals("number", "42", match.get().get("number"));
-	
+assertTrue(match.isPresent());
+assertEquals("start", "stuff", match.get().get("start"));
+assertEquals("end", "has42", match.get().get("end"));
+assertEquals("number", "42", match.get().get("number"));	
 ```
 
