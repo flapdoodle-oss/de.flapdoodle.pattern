@@ -17,7 +17,14 @@
 package de.flapdoodle.pattern.regex;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
+
+import com.google.common.base.Optional;
+import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Sets;
 
 import java.util.List;
 import java.util.Map;
@@ -26,15 +33,9 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 
-import org.junit.Assert;
 import org.junit.Test;
 
-import com.google.common.base.Optional;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Lists;
-import com.google.common.collect.Sets;
-
-public class TestPatterns {
+public class PatternsTest {
 
 	@Test
 	public void patternsWithGroups() {
@@ -172,5 +173,22 @@ public class TestPatterns {
 			timeUsed = timeUsed + (System.currentTimeMillis() - start);
 		}
 		return timeUsed;
+	}
+
+	@Test
+	public void groupPattern() throws Exception {
+		assertNotNull(Patterns.group(Pattern.compile(".*")));
+	}
+	
+	@Test
+	public void noMatchMustReturnNothing() {
+		Matcher matcher = Pattern.compile("FOO").matcher("X");
+		assertFalse(Patterns.match(matcher, ImmutableSet.<String>of()).isPresent());
+	}
+
+	@Test
+	public void simpleNamedGroupToMatchAll() throws Exception {
+		Pattern namedGroupPattern = Patterns.namedGroup("foo", "X");
+		assertNotNull(namedGroupPattern);
 	}
 }

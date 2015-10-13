@@ -19,6 +19,7 @@ package de.flapdoodle.pattern.regex;
 import com.google.common.annotations.VisibleForTesting;
 import com.google.common.base.Function;
 import com.google.common.base.Optional;
+import com.google.common.base.Preconditions;
 import com.google.common.collect.Collections2;
 import com.google.common.collect.ImmutableSet;
 import com.google.common.collect.Lists;
@@ -70,6 +71,7 @@ public class Patterns {
 	}
 
 	public static Optional<Map<String, String>> match(Matcher matcher, Set<String> names) {
+		Preconditions.checkNotNull(names,"names is null");
 		if (matcher.find()) {
 			Map<String, String> map = Maps.newHashMap();
 			for (String name : names) {
