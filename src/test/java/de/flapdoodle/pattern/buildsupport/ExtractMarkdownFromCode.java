@@ -28,7 +28,7 @@ import com.google.common.collect.Collections2;
 import com.google.common.collect.Lists;
 import com.google.common.io.Files;
 
-public class ExtractMarkdownFromCode {
+public abstract class ExtractMarkdownFromCode {
 
 	public static void main(String[] args) {
 		String sourceFileName = args[0];
